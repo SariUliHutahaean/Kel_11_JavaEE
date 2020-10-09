@@ -1,7 +1,5 @@
 package del.ac.id.demo.controller;
 
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,8 +7,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import del.ac.id.demo.jpa.Role;
-import del.ac.id.demo.jpa.RoleRepository;
 import del.ac.id.demo.jpa.User;
 import del.ac.id.demo.jpa.UserRepository;
 
@@ -28,6 +24,13 @@ public class LoginController {
 		mv.addObject("user", new User());
 		return mv;
 	}
+	@GetMapping("/index")
+	public ModelAndView index() {
+		ModelAndView mv = new ModelAndView("index");
+		mv.addObject("user", new User());
+		return mv;
+	}
+	
 	
 	@RequestMapping(value="/login", method = RequestMethod.POST)
 	public ModelAndView loginSubmit(@ModelAttribute User user) {
@@ -36,9 +39,9 @@ public class LoginController {
 		String url="login";
 		
 		if(temp != null) {
-			if (user.getPwd().equals(user.getPwd())) {
+			if (user.getPassword().equals(user.getPassword())) {
 				url="index";
-			}
+			}else {url="registration";}
 		}
 		
 		return new ModelAndView("redirect:/" + url);
