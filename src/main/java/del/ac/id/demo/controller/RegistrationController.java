@@ -43,7 +43,7 @@ public class RegistrationController {
 			}       
 		model.addAttribute("user", user);   
 		userRepository.save(user);  
-return "login"; //return ke halaman login
+			return "login"; //return ke halaman login
 }
 
 }

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<div th:switch="${jadwal.size()}">
+    <h2 th:case="0">No Schedule yet!</h2>
+    <div th:case="*">
+        <h2>Jadwal Penerbangan</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Kota Asal</th>
+                <th>Kota Tujuan</th>
+                <th>Tanggal</th>
+                <th>Harga</th>
+                <th>Option</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="jad : ${jadwal}">
+                <td th:text="${user.name}"></td>
+                <td th:text="${user.email}"></td>
+                <td th:text="${user.email}"></td>
+                <td th:text="${user.email}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/addschedule">Add a new Schedule</a></p>
+</div>
+</body>
+</html>
